@@ -40,6 +40,9 @@ public class RentInfoPage {
     //локатор кнопки "Заказать" в нижней части страницы
     private By lowerOrderButtton = By.xpath(".//div[@class='Order_Buttons__1xGrp']/button[text() = 'Заказать']" );
 
+    //локатор окна заголовка окна "Хотите оформить заказ?"
+    private By orderConfirmationWindow = By.className("Order_ModalHeader__3FDaJ");
+
     //локатор кнопки "Да" в окне "Хотите оформить заказ?"
     private By yesButton = By.xpath(".//button[text() = 'Да']");
 
@@ -106,7 +109,7 @@ public class RentInfoPage {
     //метод кликает на кнопку "Да" в окне "Хотите оформить заказ?"
     public void clickYesButton(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("Order_ModalHeader__3FDaJ")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(orderConfirmationWindow));
         driver.findElement(yesButton).click();
     }
 

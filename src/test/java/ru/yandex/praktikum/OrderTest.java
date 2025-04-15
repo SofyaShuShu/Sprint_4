@@ -20,6 +20,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 @RunWith(Parameterized.class)
 public class OrderTest {
     private WebDriver driver;
+    private BasicUtils utils;
 
     private String Name;
     private String surname;
@@ -31,19 +32,19 @@ public class OrderTest {
     private String color;
     private String comment;
 
-    public OrderTest(String Name, String surname, String adress, String station, String phone, String dateOrder, int periodOfOrder, String color, String comment){
-      this.Name = Name;
-      this.surname = surname;
-      this.adress = adress;
-      this.station = station;
-      this.phone = phone;
-      this.dateOrder = dateOrder;
-      this.periodOfOrder = periodOfOrder;
-      this.color = color;
-      this.comment = comment;
+    public OrderTest(String Name, String surname, String adress, String station, String phone, String dateOrder, int periodOfOrder, String color, String comment) {
+        this.Name = Name;
+        this.surname = surname;
+        this.adress = adress;
+        this.station = station;
+        this.phone = phone;
+        this.dateOrder = dateOrder;
+        this.periodOfOrder = periodOfOrder;
+        this.color = color;
+        this.comment = comment;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Тест {0}")
     public static Object[][] setOrder() {
         return new Object[][]{
                 {"Мария", "Иванова", "Уличная", "Черкизовская", "82345678912", "15.04.2025", 1, "чёрный жемчуг", "Т"},
@@ -53,15 +54,16 @@ public class OrderTest {
 
     @Before
     public void StartUp() {
-        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        // driver = new FirefoxDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        driver.get("https://qa-scooter.praktikum-services.ru/");
+        //driver = new FirefoxDriver();
+        utils = new BasicUtils(driver);
+        utils.StartUp();
     }
+
     @Test
-    public void OrderInfoTestWithUpperOrderButton(){
+    public void OrderInfoTestWithUpperOrderButton() {
         MainPage objMainPage = new MainPage(driver);
+        driver.get(objMainPage.MAINPAGE_URL);
         objMainPage.clickUpperOrderButton();
         OrderPage objOrderPage = new OrderPage(driver);
 
@@ -88,9 +90,11 @@ public class OrderTest {
         assertThat("Сообщение об успешном заказе отсутствует", textOrderSuccess, containsString("Заказ оформлен"));
 
     }
+
     @Test
-    public void OrderInfoTestWithLowerOrderButton(){
+    public void OrderInfoTestWithLowerOrderButton() {
         MainPage objMainPage = new MainPage(driver);
+        driver.get(objMainPage.MAINPAGE_URL);
         objMainPage.clickLowerOrderButton();
         OrderPage objOrderPage = new OrderPage(driver);
 
@@ -118,7 +122,7 @@ public class OrderTest {
     }
 
     @After
-    public void tearDown(){
-        driver.quit();
+    public void tearDown() {
+        utils.tearDown();
     }
 }

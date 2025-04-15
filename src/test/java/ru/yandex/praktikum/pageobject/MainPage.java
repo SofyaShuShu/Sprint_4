@@ -10,6 +10,7 @@ import static org.junit.Assert.assertTrue;
 public class MainPage {
 
     private WebDriver driver;
+    public final String MAINPAGE_URL = "https://qa-scooter.praktikum-services.ru/";
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
@@ -47,17 +48,18 @@ public class MainPage {
     }
 
     //метод получает строку с ответом в соответствии с индексом строки
-    public WebElement getAnswer(int INDEX) {
+    public WebElement getAnswer(int index) {
         List<WebElement> questions = driver.findElements(qestions);
 
         //Проверка, что строка с таким индексом представлена на странице
-        assertTrue("Строки с таким номером нет в списке", (questions.size() >= INDEX));
+        assertTrue("Строки с таким номером нет в списке", (questions.size() >= index));
 
         // кликам на нужной строке
-        questions.get(INDEX).click();
+        questions.get(index).click();
 
         // получаем строку с ответом
-        return questions.get(INDEX).findElement(answers);
+      return questions.get(index).findElement(answers);
     }
+
 
 }
