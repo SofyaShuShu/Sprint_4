@@ -94,7 +94,6 @@ public class RentInfoPage {
         else{
             driver.findElement(colorFieldGrey).click();
         }
-
     }
     //метод заполняет поле "Комментарий"
     public void fillCommentField(String comment){

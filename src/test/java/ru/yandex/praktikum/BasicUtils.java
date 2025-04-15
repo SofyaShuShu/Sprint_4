@@ -19,7 +19,6 @@ public class BasicUtils {
         driver.manage().window().maximize();
     }
 
-
     public void tearDown() {
         if (driver != null) {
             driver.quit();

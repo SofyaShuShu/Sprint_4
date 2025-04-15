@@ -104,7 +104,6 @@ public class OrderTest {
         //кликаем на кнопку "Далее"
         objOrderPage.clickAheadButton();
 
-
         RentInfoPage objRentInfoPage = new RentInfoPage(driver);
 
         //заполняем страницу "Про аренду"

@@ -79,6 +79,7 @@ public class ImportantQuestionsTest {
         assertEquals("Неверный текст в строке с индексом " + INDEXOfROW, EXPECTED_STRING, actualText);
     }
 
+
     @After
     public void tearDown() {
         utils.tearDown();

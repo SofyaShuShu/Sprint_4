@@ -39,7 +39,6 @@ public class OrderPage {
     //локатор кнопки "Далее"
     private By aheadButton = By.xpath(".//button[text() = 'Далее']");
 
-
     //метод заполняет поле "Имя"
     public void fillnameField(String name){
         driver.findElement(nameField).sendKeys(name);

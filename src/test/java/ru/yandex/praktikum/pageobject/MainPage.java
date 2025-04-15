@@ -60,6 +60,4 @@ public class MainPage {
         // получаем строку с ответом
       return questions.get(index).findElement(answers);
     }
-
-
 }
