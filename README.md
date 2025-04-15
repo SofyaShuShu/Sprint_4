@@ -11,9 +11,9 @@
 Тест **OrderInfoTestWithLowerOrderButton** использует в качестве входа в сценарий кнопку "Заказать" в нижней части экрана.
 
 # В проекте используются:
-Java 11  
-JUnit 4.13.2  
-Selenium 4.31.0  
-WebDriverManager 6.0.1  
+Java 11
+JUnit 4.13.2
+Selenium 4.31.0
+WebDriverManager 6.0.1
 Maven 3.9.0.
 
